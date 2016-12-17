@@ -11,7 +11,7 @@
     </div>
     <form action="#" method="get" class="sidebar-form">
       <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <input type="text" name="q" class="form-control" placeholder="Rechercher...">
         <span class="input-group-btn">
           <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
           </button>
@@ -19,7 +19,7 @@
       </div>
     </form>
     <ul class="sidebar-menu">
-      <li class="header">MAIN NAVIGATION</li>
+      <li class="header">NAVIGATION</li>
       <li>
         <a ui-sref='app.landing'>
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -27,21 +27,22 @@
       </li>
       <li class="treeview" ng-show="vm.can('manage.users')">
         <a href="javascript:void(0)">
-          <i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="fa fa-users"></i> <span>Utilisateurs</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>User List</span></a></li>
+          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>Liste Utilisateurs</span></a></li>
         </ul>
       </li>
       <li class="treeview" ng-show="vm.can('manage.roles') || vm.can('manage.permissions')">
         <a href="javascript:void(0)">
-          <i class="fa fa-cog"></i> <span>Settings</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="fa fa-cog"></i> <span>Réglages</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.roles')"><a ui-sref='app.userroles'><i class="fa fa-circle-o"></i> <span>User Roles</span></a></li>
-          <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.userpermissions'><i class="fa fa-circle-o"></i> <span>User Permissions</span></a></li>
+          <li ng-show="vm.can('manage.roles')"><a ui-sref='app.userroles'><i class="fa fa-circle-o"></i> <span>Roles utilisateurs</span></a></li>
+          <li ng-show="vm.can('manage.permissions')"><a ui-sref='app.userpermissions'><i class="fa fa-circle-o"></i> <span>Permissions Utilisateur</span></a></li>
         </ul>
       </li>
+<!--
       <li class="treeview">
         <a href="javascript:void(0)">
           <i class="fa fa-files-o"></i>
@@ -89,6 +90,7 @@
           <li><a ui-sref="app.uimodal"><i class="fa fa-circle-o"></i> Modals</a></li>
         </ul>
       </li>
+
       <li class="treeview">
         <a href="javascript:void(0)">
           <i class="fa fa-edit"></i> <span>Forms</span>
@@ -116,16 +118,19 @@
           <small class="label pull-right bg-red">3</small>
         </a>
       </li>
+
       <li>
         <a ui-sref="app.comingsoon">
           <i class="fa fa-envelope"></i> <span>Mailbox</span>
           <small class="label pull-right bg-yellow">12</small>
         </a>
       </li>
-      <li class="header">LABELS</li>
+-->
+
+      <li class="header">Autre</li>
       <li class="treeview">
         <a href="javascript:void(0)">
-          <i class="fa fa-folder"></i> <span>Examples</span>
+          <i class="fa fa-folder"></i> <span>Exemples</span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
