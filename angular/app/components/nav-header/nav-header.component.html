@@ -1,7 +1,7 @@
 <header class="main-header">
   <a href="/" class="logo">
-    <span class="logo-mini"><b>A</b>LT</span>
-    <span class="logo-lg"><b>Admin</b>LTE</span>
+    <span class="logo-mini"><b>A</b>&G</span>
+    <span class="logo-lg"><b>APP and GO</b> Admin</span>
   </a>
   <nav class="navbar navbar-static-top">
     <a href="javascript:void(0)" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -186,13 +186,13 @@
               </ul>
             </li>
             <li class="footer">
-              <a href="#">View all tasks</a>
+              <a href="#">Voir toutes les taches</a>
             </li>
           </ul>
         </li>
         <li class="dropdown user user-menu" uib-dropdown>
           <a href="" class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>
-            <img src="{{vm.userData.avatar}}" class="user-image" alt="User Image" onError="this.src='//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16'">
+            <img ng-src="{{vm.userData.avatar}}" class="user-image" alt="User Image" onError="this.src='//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16'">
             <span class="hidden-xs">{{vm.userData.name | capitalize}}</span>
           </a>
           <ul class="dropdown-menu" uib-dropdown-menu>
@@ -200,7 +200,7 @@
               <img src="{{vm.userData.avatar}}" class="img-circle" alt="User Image" onError="this.src='//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=90&h=90&txtsize=36'">
               <p>
                 {{vm.userData.name | capitalize}}
-                <small>Member since {{vm.userData.created_at | datemillis |date:'MMMM yyyy' }}</small>
+                <!--<small>Member since {{vm.userData.created_at | datemillis |date:'MMMM yyyy'}}</small>-->
               </p>
             </li>
             <li class="user-body">
@@ -209,10 +209,10 @@
                   <a href="#">Followers</a>
                 </div>
                 <div class="col-xs-4 text-center">
-                  <a href="#">Sales</a>
+                  <a href="#">Ventes</a>
                 </div>
                 <div class="col-xs-4 text-center">
-                  <a href="#">Friends</a>
+                  <a href="#">Amis</a>
                 </div>
               </div>
             </li>
