@@ -15,22 +15,22 @@ class UserListsController {
           .withOption('createdRow', createdRow)
           .withOption('responsive', true)
           .withLanguage({
-            "sEmptyTable":     "No data available in table",
-            "sInfo":           "Showing _START_ to _END_ of _TOTAL_ entries",
-            "sInfoEmpty":      "Showing 0 to 0 of 0 entries",
+            "sEmptyTable":     "Aucun utilisateur enregistré",
+            "sInfo":           "Page _START_ sur _END_ avec _TOTAL_ utilisateurs",
+            "sInfoEmpty":      "Rien à afficher",
             "sInfoFiltered":   "(filtered from _MAX_ total entries)",
             "sInfoPostFix":    "",
             "sInfoThousands":  ",",
-            "sLengthMenu":     "Show _MENU_ entries",
-            "sLoadingRecords": "Loading...",
+            "sLengthMenu":     "Voir _MENU_ résultats",
+            "sLoadingRecords": "Chargement...",
             "sProcessing":     "Processing...",
             "sSearch":         "Recherche:",
-            "sZeroRecords":    "No matching records found",
+            "sZeroRecords":    "Aucun résultat ne correpond à votre recherche",
             "oPaginate": {
-                "sFirst":    "First",
-                "sLast":     "Last",
-                "sNext":     "Next",
-                "sPrevious": "Previous"
+                "sFirst":    "Premier",
+                "sLast":     "Dernier",
+                "sNext":     "Suivant",
+                "sPrevious": "Precedent"
             },
             "oAria": {
                 "sSortAscending":  ": activate to sort column ascending",
