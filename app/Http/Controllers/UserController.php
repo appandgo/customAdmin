@@ -10,6 +10,8 @@ use Hash;
 use Illuminate\Http\Request;
 use Input;
 use Validator;
+use JWTAuth;
+use Mail;
 
 class UserController extends Controller
 {
@@ -30,17 +32,50 @@ class UserController extends Controller
      *
      * @return JSON
      */
-    public function postMe()
+    public function postUsers(Request $request)
+    //public function postUsers()
     {
-        $currentUser = Auth::user();
 
+
+
+        
+        $this->validate($request, [
+            'name'       => 'required|min:3',
+            'email'      => 'required|email|unique:users',
+            //'password'   => 'required|min:8|confirmed',
+            'password'   => 'required|min:8',
+        ]);
+        
+
+
+        $verificationCode = str_random(40);
+
+        $user = new User();
+        $user->name = trim( $request->input('name'));
+        $user->email = trim(strtolower(Input::get('email')));
+        $user->password = bcrypt(Input::get('password'));
+        $user->email_verification_code = $verificationCode;
+        $user->email_verified = 1;
+        $user->save();
+
+        $token = JWTAuth::fromUser($user);
+
+
+        Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
+            $m->to($request->email, 'test')->subject('Email Confirmation');
+        });
+        
+
+        return response()->success(compact('user', 'token'));
+
+        /*
         $user = User::create([
-            'name' => Input::get('user'),
-            'slug' => str_slug(Input::get('slug'), '.'),
-            'description' => Input::get('description'),
+            'name' => Input::get('name'),
+            'email' => Input::get('email'),
         ]);
 
         return response()->success(compact('user'));
+        */
     }
 
 

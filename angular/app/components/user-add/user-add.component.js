@@ -6,6 +6,10 @@ class UserAddController{
     this.API = API
     this.alerts = []
 
+    this.name = "brian"
+    this.password="Mopiou190257"
+    this.email="test2@test.com"
+
     if ($stateParams.alerts) {
       this.alerts.push($stateParams.alerts)
     }
@@ -13,26 +17,26 @@ class UserAddController{
 
   save (isValid) {
     this.$state.go(this.$state.current, {}, { alerts: 'test' })
-/*
+
     if (isValid) {
-      let Roles = this.API.service('roles', this.API.all('users'))
+      let Users = this.API.all('users')
       let $state = this.$state
 
-      Roles.post({
-        'role': this.role,
-        'slug': this.slug,
-        'description': this.description
+      Users.post({
+        'name': this.name,
+        'email': this.email,
+        'password': this.password
       }).then(function () {
-        let alert = { type: 'success', 'title': 'Success!', msg: 'Role has been added.' }
-        $state.go($state.current, { alerts: alert})
+        let alert = { type: 'success', 'title': 'Super !', msg: 'Utilisateur ajouté.' }
+        $state.go('app.userlist', { alerts: alert})
       }, function (response) {
-        let alert = { type: 'error', 'title': 'Error!', msg: response.data.message }
+        let alert = { type: 'error', 'title': 'Erreur !', msg: response.data.message }
         $state.go($state.current, { alerts: alert})
       })
     } else {
       this.formSubmitted = true
     }
-*/
+
   }
 
     $onInit(){

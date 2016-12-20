@@ -163,6 +163,9 @@ export function RoutesConfig ($stateProvider, $urlRouterProvider) {
         'main@app': {
           template: '<user-lists></user-lists>'
         }
+      },
+      params: {
+        alerts: null
       }
     })
     .state('app.useradd', {

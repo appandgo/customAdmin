@@ -35,5 +35,7 @@ $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
 });
 
 $api->group(['middleware' => ['api', 'api.auth', 'role:admin.super|admin.user']], function ($api) {
+    $api->post('users', 'UserController@postUsers');
     $api->controller('users', 'UserController');
+
 });
