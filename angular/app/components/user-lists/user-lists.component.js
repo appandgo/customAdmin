@@ -14,11 +14,35 @@ class UserListsController {
           .withOption('data', dataSet)
           .withOption('createdRow', createdRow)
           .withOption('responsive', true)
+          .withLanguage({
+            "sEmptyTable":     "No data available in table",
+            "sInfo":           "Showing _START_ to _END_ of _TOTAL_ entries",
+            "sInfoEmpty":      "Showing 0 to 0 of 0 entries",
+            "sInfoFiltered":   "(filtered from _MAX_ total entries)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ",",
+            "sLengthMenu":     "Show _MENU_ entries",
+            "sLoadingRecords": "Loading...",
+            "sProcessing":     "Processing...",
+            "sSearch":         "Recherche:",
+            "sZeroRecords":    "No matching records found",
+            "oPaginate": {
+                "sFirst":    "First",
+                "sLast":     "Last",
+                "sNext":     "Next",
+                "sPrevious": "Previous"
+            },
+            "oAria": {
+                "sSortAscending":  ": activate to sort column ascending",
+                "sSortDescending": ": activate to sort column descending"
+            }
+          })
+
           .withBootstrap()
 
         this.dtColumns = [
           DTColumnBuilder.newColumn('id').withTitle('ID'),
-          DTColumnBuilder.newColumn('name').withTitle('Name'),
+          DTColumnBuilder.newColumn('name').withTitle('Nom'),
           DTColumnBuilder.newColumn('email').withTitle('Email'),
           DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
             .renderWith(actionsHtml)
@@ -46,6 +70,8 @@ class UserListsController {
   delete (userId) {
     let API = this.API
     let $state = this.$state
+
+
 
     swal({
       title: 'Are you sure?',
