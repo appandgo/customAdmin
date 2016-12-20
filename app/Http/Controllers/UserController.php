@@ -62,7 +62,7 @@ class UserController extends Controller
 
 
         Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
-            $m->to($request->email, 'test')->subject('Email Confirmation');
+            $m->to($request->email, 'test')->subject('Confirmer votre mail');
         });
         
 
