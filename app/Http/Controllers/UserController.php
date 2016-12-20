@@ -217,8 +217,8 @@ class UserController extends Controller
      */
     public function deleteUser($id)
     {
-        // $user = User::find($id);
-        // $user->delete();
+        $user = User::find($id);
+        $user->delete();
         return response()->success('success');
     }
 
