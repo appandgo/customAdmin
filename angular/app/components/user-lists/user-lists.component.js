@@ -9,7 +9,7 @@ class UserListsController {
     Users.getList()
       .then((response) => {
         let dataSet = response.plain()
-
+        
         this.dtOptions = DTOptionsBuilder.newOptions()
           .withOption('data', dataSet)
           .withOption('createdRow', createdRow)
