@@ -1,3 +1,6 @@
+@import "./angular/material/project";
+
+
 .btn-github:hover {
     color: #fff
 }
@@ -8,4 +11,9 @@
 
 .btn-google:hover {
     color: #fff
+}
+
+.btn.signin{
+  background-color: $lajavelle;
+  color:white;
 }

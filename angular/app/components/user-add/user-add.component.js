@@ -6,6 +6,7 @@ class UserAddController{
     this.API = API
     this.alerts = []
 
+/* test */
     this.name = "brian"
     this.password="Mopiou190257"
     this.email="test2@test.com"
