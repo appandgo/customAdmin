@@ -9,12 +9,11 @@
     "starter kit"
   ],
   "website": "http://silverbux.github.io/laravel-angular-admin/",
-  "repository": "https://github.com/silverbux/laravel-angular-admin/tree/deploy-to-heroku",
+  "repository": "https://github.com/mopiou/customAdmin/tree/zuo-zhang",
   "scripts": {
     "postdeploy": "composer install"
   },
   "addons": [
-    "cleardb"
   ],
   "env": {
     "API_PREFIX": {
