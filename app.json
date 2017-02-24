@@ -1,6 +1,6 @@
 {
-  "name": "Laravel Angular Admin",
-  "description": "Laravel + Angularjs + Bootstrap + AdminLTE binded by Gulp workflow Admin Dashboard Boilerplate / Starter.",
+  "name": "Custom Admin",
+  "description": "Laravel + Angularjs + Bootstrap  : Admin Dashboard Boilerplate / Starter.",
   "keywords": [
     "laravel",
     "angular",
