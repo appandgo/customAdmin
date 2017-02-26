@@ -1,5 +1,5 @@
 class LoginFormController {
-  constructor ($rootScope, $auth, $state, $stateParams, API, AclService) {
+  constructor ($rootScope, $auth, $state, $stateParams,$log, API, AclService) {
     'ngInject'
 
     delete $rootScope.me
@@ -31,8 +31,10 @@ class LoginFormController {
       password: this.password
     }
 
+
     this.$auth.login(user)
       .then((response) => {
+        console.log(response)
         let data = response.data.data
         let AclService = this.AclService
 
@@ -48,10 +50,11 @@ class LoginFormController {
   }
 
   failedLogin (res) {
+    console.log(res)
     if (res.status == 401) {
       this.loginfailed = true
     } else {
-      if (res.data.errors.message[0] == 'Email Unverified') {
+      if (res.data.errors && res.data.errors.message && res.data.errors.message[0] == 'Email Unverified') {
         this.unverified = true
       } else {
         // other kinds of error returned from server

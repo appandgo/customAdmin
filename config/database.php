@@ -114,6 +114,7 @@ return [
     |
     */
 
+
     'redis' => [
 
         'cluster' => false,

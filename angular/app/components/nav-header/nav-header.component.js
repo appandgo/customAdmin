@@ -1,5 +1,5 @@
 class NavHeaderController {
-  constructor ($rootScope, ContextService,$log) {
+  constructor ($rootScope, ContextService) {
     'ngInject'
 
     let navHeader = this
