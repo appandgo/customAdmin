@@ -38,14 +38,14 @@ class UserController extends Controller
 
 
 
-        
+
         $this->validate($request, [
             'name'       => 'required|min:3',
             'email'      => 'required|email|unique:users',
             //'password'   => 'required|min:8|confirmed',
             'password'   => 'required|min:8',
         ]);
-        
+
 
 
         $verificationCode = str_random(40);
@@ -56,15 +56,16 @@ class UserController extends Controller
         $user->password = bcrypt(Input::get('password'));
         $user->email_verification_code = $verificationCode;
         $user->email_verified = 1;
+        // $user->email_verified = 0;
         $user->save();
 
         $token = JWTAuth::fromUser($user);
 
-
+/*
         Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
-            $m->to($request->email, 'test')->subject('Confirmer votre mail');
+            $m->to($request->email, 'test')->subject('Confirmez votre mail');
         });
-        
+*/
 
         return response()->success(compact('user', 'token'));
 
