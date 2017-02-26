@@ -119,6 +119,27 @@ class AuthController extends Controller
         ]);
     }
 
+
+    /**
+     * Authenticate user.
+     *
+     * @param Instance Request instance
+     *
+     * @return JSON user details and auth credentials
+     */
+    public function getLogin(Request $request)
+    {
+
+      $user = User::all()->first();
+
+      return response()->success(compact('user'));
+
+    }
+
+
+
+
+
     /**
      * Authenticate user.
      *
@@ -159,6 +180,7 @@ class AuthController extends Controller
         }
 
         return response()->success(compact('user', 'token', 'abilities', 'userRole'));
+
     }
 
     public function verifyUserEmail($verificationCode)

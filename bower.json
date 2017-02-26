@@ -1,7 +1,7 @@
 {
   "name": "laravel-angularjs-admin",
   "authors": [
-    "Alex Quiambao <alexquiambao@gmail.com>"
+    "Brian Soufir <brian.soufir@app-and-go.fr>"
   ],
   "ignore": [
     "**/.*",
