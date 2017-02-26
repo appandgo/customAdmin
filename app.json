@@ -26,24 +26,25 @@
       "value": "production",
       "required": true
     },
+
     "DB_DATABASE": {
       "description": "Database Name.",
-      "value": "setup later",
+      "value": "d609qbg11j6se0",
       "required": false
     },
     "DB_HOST": {
       "description": "Database Host.",
-      "value": "setup later",
+      "value": "ec2-176-34-110-252.eu-west-1.compute.amazonaws.com",
       "required": false
     },
     "DB_USERNAME": {
       "description": "Database Username.",
-      "value": "setup later",
+      "value": "apyhjufvvgqnhz",
       "required": false
     },
     "DB_PASSWORD": {
       "description": "Database Password.",
-      "value": "setup later",
+      "value": "5a74d73ba20298d10ca922443451b39a0cb104d62f4d5e68873da7ab8f0183d2",
       "required": false
     },
     "MAIL_DRIVER": {

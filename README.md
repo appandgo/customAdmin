@@ -1,4 +1,4 @@
-## Setup 
+## Setup
 
 **Install composer on mutual hosting**
 
@@ -89,11 +89,11 @@ $ artisan ng:config name     #New config inside angular/config/
 
 **Database Migration**
 ```
-$ heroku run php artisan migrate --app your_app_name
+$ heroku run php artisan migrate --app appandgo-customadmin
 ```
 **Database Seeds**
 ```
-$ heroku run php artisan migrate --app your_app_name
+$ heroku run php artisan db:seed --app appandgo-customadmin
 ```
 
 ## Contributing
@@ -105,4 +105,3 @@ This project wont be possible without the following, We acknowledge and are grat
 
 * [Laravel-Angular (Material)] (https://laravel-angular.readme.io)
 * [AdminLTE] (https://github.com/almasaeed2010/AdminLTE)
-
