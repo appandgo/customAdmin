@@ -93,7 +93,7 @@ $ heroku run php artisan migrate --app appandgo-mounir-customadmin
 ```
 **Database Seeds**
 ```
-$ heroku run php artisan db:seed --appandgo-mounir-customadmin
+$ heroku run php artisan db:seed --app appandgo-mounir-customadmin
 ```
 
 ## Contributing
