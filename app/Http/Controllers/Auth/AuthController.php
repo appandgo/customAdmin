@@ -88,7 +88,7 @@ class AuthController extends Controller
         } catch (Exception $e) {
             return Redirect::to('auth/'.$provider);
         }
-        return response()->success($user);        
+        return response()->success($user);
         /*
         $authUser = $this->findOrCreateUser($user, $provider);
 
