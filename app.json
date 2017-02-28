@@ -29,22 +29,22 @@
 
     "DB_DATABASE": {
       "description": "Database Name.",
-      "value": "de9glpvm4ams09",
+      "value": "d5icsabpdr8kr5",
       "required": false
     },
     "DB_HOST": {
       "description": "Database Host.",
-      "value": "ec2-54-247-189-141.eu-west-1.compute.amazonaws.com",
+      "value": "ec2-54-217-222-254.eu-west-1.compute.amazonaws.com",
       "required": false
     },
     "DB_USERNAME": {
       "description": "Database Username.",
-      "value": "uggjqpzpdurlbi",
+      "value": "dtbuphhzxkqbxg",
       "required": false
     },
     "DB_PASSWORD": {
       "description": "Database Password.",
-      "value": "14217b5e4f823024ddb2c2731e804c77b949016360345e981d94d0aa35592d10",
+      "value": "a684f32da554c26c8d556c3ce341f9807df148693edf3da42eb33ecb67ed094e",
       "required": false
     },
     "MAIL_DRIVER": {
@@ -95,7 +95,8 @@
     },
     "FACEBOOK_REDIRECT": {
       "description": "facebook redirect url for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value":"https://appandgo-mounir-customadmin.herokuapp.com/auth/facebook/callback"
     },
     "GITHUB_CLIENT_ID": {
       "description": "github client id for oauth login (optional).",
