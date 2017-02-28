@@ -112,15 +112,18 @@
     },
     "GOOGLE_CLIENT_ID": {
       "description": "google client id for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value" : "320931197193-t4tdc2b6655e4cb8bh1mok8qqse2alic.apps.googleusercontent.com"
     },
     "GOOGLE_CLIENT_SECRET": {
       "description": "google client secret for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value":"GW7umW7JYrjbGAWbp9GIQ8vd"
     },
     "GOOGLE_REDIRECT": {
       "description": "google redirect url for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value":"https://appandgo-mounir-customadmin.herokuapp.com/auth/google/callback"
     }
   },
   "buildpacks": [
