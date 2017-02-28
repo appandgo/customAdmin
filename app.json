@@ -1,5 +1,5 @@
 {
-  "name": "Custom Admin",
+  "name": "mounir Custom Admin",
   "description": "Laravel + Angularjs + Bootstrap  : Admin Dashboard Boilerplate / Starter.",
   "keywords": [
     "laravel",
@@ -29,22 +29,22 @@
 
     "DB_DATABASE": {
       "description": "Database Name.",
-      "value": "d609qbg11j6se0",
+      "value": "de9glpvm4ams09",
       "required": false
     },
     "DB_HOST": {
       "description": "Database Host.",
-      "value": "ec2-176-34-110-252.eu-west-1.compute.amazonaws.com",
+      "value": "ec2-54-247-189-141.eu-west-1.compute.amazonaws.com",
       "required": false
     },
     "DB_USERNAME": {
       "description": "Database Username.",
-      "value": "apyhjufvvgqnhz",
+      "value": "uggjqpzpdurlbi",
       "required": false
     },
     "DB_PASSWORD": {
       "description": "Database Password.",
-      "value": "5a74d73ba20298d10ca922443451b39a0cb104d62f4d5e68873da7ab8f0183d2",
+      "value": "14217b5e4f823024ddb2c2731e804c77b949016360345e981d94d0aa35592d10",
       "required": false
     },
     "MAIL_DRIVER": {
@@ -85,11 +85,13 @@
     },
     "FACEBOOK_CLIENT_ID": {
       "description": "facebook client id for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value":1368002846591785
     },
     "FACEBOOK_CLIENT_SECRET": {
       "description": "facebook client secret for oauth login (optional).",
-      "required": false
+      "required": false,
+      "value":"621594690a5e90d3014348e84e700b84"
     },
     "FACEBOOK_REDIRECT": {
       "description": "facebook redirect url for oauth login (optional).",
