@@ -89,11 +89,11 @@ $ artisan ng:config name     #New config inside angular/config/
 
 **Database Migration**
 ```
-$ heroku run php artisan migrate --app appandgo-customadmin
+$ heroku run php artisan migrate --app appandgo-mounir-customadmin
 ```
 **Database Seeds**
 ```
-$ heroku run php artisan db:seed --app appandgo-customadmin
+$ heroku run php artisan db:seed --appandgo-mounir-customadmin
 ```
 
 ## Contributing
