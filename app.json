@@ -86,7 +86,7 @@
     "FACEBOOK_CLIENT_ID": {
       "description": "facebook client id for oauth login (optional).",
       "required": false,
-      "value":1368002846591785
+      "value":"1368002846591785"
     },
     "FACEBOOK_CLIENT_SECRET": {
       "description": "facebook client secret for oauth login (optional).",
