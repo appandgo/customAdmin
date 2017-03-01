@@ -93,7 +93,8 @@ class AuthController extends Controller
 
         \Auth::login($authUser, true);
 
-        return \Redirect::to('/#/login-loader');
+        //return \Redirect::to('/#/login-loader');
+          return response()->success($user);
     }
 
     /**
