@@ -120,7 +120,17 @@ class AuthController extends Controller
             'avatar' => $oauthUser->avatar,
         ]);
     }
-
+    //This method will handle the Ionic application facebook Oauth
+    //It will receive directly yhe oauthProviderId && the provider_name
+    //For test matters it will return responses to the client
+    //@return Response 
+    public function mApiFindOrCreateUser($provider,$oauthProviderId){
+      if ($authUser = User::where('oauth_provider_id', $oauthProviderId)->where('oauth_provider', '=', $provider)->first()) {
+          //just for mobile response test
+          return $response->success($authUser);
+      }
+      return $response->success('This user doesn\'t exist yet, you have to implement the code to add it');
+    }
 
     /**
      * Authenticate user.
