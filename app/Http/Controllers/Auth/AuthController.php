@@ -93,7 +93,7 @@ class AuthController extends Controller
 
         \Auth::login($authUser, true);
         return \Redirect::to('/#/login-loader');
-        
+
     }
 
     /**
@@ -107,7 +107,8 @@ class AuthController extends Controller
     private function findOrCreateUser($oauthUser, $provider)
     {
         if ($authUser = User::where('oauth_provider_id', $oauthUser->getId())->where('oauth_provider', '=', $provider)->first()) {
-            return $authUser;
+            //just for mobile response test 
+            return response()->success($authUser);
         }
 
         return User::create([
