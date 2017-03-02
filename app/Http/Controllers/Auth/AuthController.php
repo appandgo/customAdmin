@@ -131,16 +131,13 @@ class AuthController extends Controller
       }
       //In case user does not exist we retreive its information via his accesToken
       $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
-      return response()->success($oauthUser);
-      /*return User::create([
           'name' => $oauthUser->name,
           'email' => $oauthUser->email,
           'password'=>bcrypt("test"),
           'oauth_provider' => $provider,
-          'oauth_provider_id' => $oauthUser->getId(),
+          'oauth_provider_id' => $oauthProviderId,
           'avatar' => $oauthUser->avatar,
-      ]);*/
-      
+      ]);
     }
 
     /**
