@@ -127,9 +127,9 @@ class AuthController extends Controller
     public function mApiFindOrCreateUser($provider,$oauthProviderId){
       if ($authUser = User::where('oauth_provider_id', $oauthProviderId)->where('oauth_provider', '=', $provider)->first()) {
           //just for mobile response test
-          return $response->success($authUser);
+          return $response()->success($authUser);
       }
-      return $response->success('This user doesn\'t exist yet, you have to implement the code to add it');
+      return $response()->success('This user doesn\'t exist yet, you have to implement the code to add it');
     }
 
     /**
