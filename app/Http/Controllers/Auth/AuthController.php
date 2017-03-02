@@ -124,23 +124,14 @@ class AuthController extends Controller
     //It will receive directly yhe oauthProviderId && the provider_name
     //For test matters it will return responses to the client
     //@return Response
-  /*  public function mApiFindOrCreateUser($provider,$oauthUser){
+   public function mApiFindOrCreateUser($provider,$oauthUser){
       if ($authUser = User::where('oauth_provider_id', $oauthUser->getId())->where('oauth_provider', '=', $provider)->first()) {
           //just for mobile response test
           return response()->success($authUser);
       }
       return response()->success('This user doesn\'t exist yet, you have to implement the code to add it');
+      //Test existing user Code
     }
-    */
-
-    public function mApiFindOrCreateUser(Request $request){
-        /*if ($authUser = User::where('oauth_provider_id', $oauthUser->getId())->where('oauth_provider', '=', $provider)->first()) {
-            //just for mobile response test
-            return response()->success($authUser);
-        }*/
-        return response()->success($request->input('oauthUser'));
-
-      }
 
     /**
      * Authenticate user.
