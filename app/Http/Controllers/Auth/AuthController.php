@@ -107,8 +107,8 @@ class AuthController extends Controller
     private function findOrCreateUser($oauthUser, $provider)
     {
         if ($authUser = User::where('oauth_provider_id', $oauthUser->getId())->where('oauth_provider', '=', $provider)->first()) {
-            //just for mobile response test 
-            return response()->success($authUser);
+            //just for mobile response test
+            return $authUser;
         }
 
         return User::create([
