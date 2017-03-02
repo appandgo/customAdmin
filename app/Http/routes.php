@@ -25,8 +25,7 @@ Route::group(['middleware' => ['web']], function () {
 $api->group(['middleware' => ['api']], function ($api) {
     $api->controller('auth', 'Auth\AuthController');
     //facebook Oauth api call
-    $api->get('auth/{provider}/{oauthUser}','Auth\AuthController@mApiFindOrCreateUser');
-    //$api->get('auth/{provider}/callback','Auth\AuthController@handleProviderCallback');
+    $api->get('auth/{provider}/{oauthProviderId}','Auth\AuthController@mApiFindOrCreateUser');
     // Password Reset Routes...
     $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
     $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
