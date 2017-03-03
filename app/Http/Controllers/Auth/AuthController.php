@@ -122,25 +122,11 @@ class AuthController extends Controller
     }
     //This method will handle the Ionic application facebook Oauth
     //It will receive directly yhe oauthProviderId && the provider_name
-    //For test matters it will return responses to the client
-    //@return Response
-   public function mApiFindOrCreateUser($provider,$oauthProviderId,$accessToken){
-      if ($authUser = User::where('oauth_provider_id', $oauthProviderId)->where('oauth_provider', '=', $provider)->first()) {
-          //just for mobile response test
-          return response()->success($authUser);
-      }
-      //In case user does not exist we retreive its information via his accesToken
-      $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
 
-       User::create([
-          'name' => $oauthUser->name,
-          'email' => $oauthUser->email,
-          'password'=>bcrypt("test"),
-          'oauth_provider' => $provider,
-          'oauth_provider_id' => $oauthProviderId,
-          'avatar' => $oauthUser->avatar,
-      ]);
-      return response()->success($oauthUser);
+    public function findUserByProviderToken($provider,$accessToken){
+        $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
+        $user = findOrCreateUser($oauthUser,$provider);
+        return response()->success($user);
     }
 
     /**
