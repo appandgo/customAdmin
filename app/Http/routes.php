@@ -26,7 +26,7 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->controller('auth', 'Auth\AuthController');
     //facebook Oauth api call
     //here we are sending to the server provider, id and the accessToken
-    $api->get('auth/{provider}/{oauthProviderId}/{accessToken}','Auth\AuthController@mApiFindOrCreateUser');
+    $api->get('auth/{provider}/{oauthProviderId}/{accessToken}','Auth\AuthController@findUserByProviderToken');
     // Password Reset Routes...
     $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
     $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
