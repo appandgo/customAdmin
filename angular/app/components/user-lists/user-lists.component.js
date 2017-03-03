@@ -9,7 +9,7 @@ class UserListsController {
     Users.getList()
       .then((response) => {
         let dataSet = response.plain()
-        
+
         this.dtOptions = DTOptionsBuilder.newOptions()
           .withOption('data', dataSet)
           .withOption('createdRow', createdRow)
@@ -80,12 +80,13 @@ class UserListsController {
       showCancelButton: true,
       confirmButtonColor: '#DD6B55',
       confirmButtonText: 'Yes, delete it!',
-      closeOnConfirm: false,
+      closeOnConfirm: true,
       showLoaderOnConfirm: true,
       html: false
     }, function () {
       API.one('users').one('user', userId).remove()
         .then(() => {
+          /*
           swal({
             title: 'Deleted!',
             text: 'User Permission has been deleted.',
@@ -95,6 +96,10 @@ class UserListsController {
           }, function () {
             $state.reload()
           })
+          */
+          $state.reload()
+
+
         })
     })
   }
