@@ -125,7 +125,7 @@ class AuthController extends Controller
 
     public function findUserByProviderToken($provider,$accessToken){
         $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
-        $user = findOrCreateUser($oauthUser,$provider);
+        $user = $this->findOrCreateUser($oauthUser,$provider);
         return response()->success($user);
     }
 
