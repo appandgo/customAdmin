@@ -44,37 +44,36 @@ class UserController extends Controller
             'password'   => 'required|min:8',
         ]);
 
+        
+                  $verificationCode = str_random(40);
 
+                  $user = new User();
+                  $user->name = trim( $request->input('name'));
+                  $user->email = trim(strtolower(Input::get('email')));
+                  $user->password = bcrypt(Input::get('password'));
+                  $user->email_verification_code = $verificationCode;
+                  $user->email_verified = 1;
+                  // $user->email_verified = 0;
+                  $user->save();
+                  $token = JWTAuth::fromUser($user);
 
-        $verificationCode = str_random(40);
+          /*
+                  Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
+                      $m->to($request->email, 'test')->subject('Confirmez votre mail');
+                  });
+          */
 
-        $user = new User();
-        $user->name = trim( $request->input('name'));
-        $user->email = trim(strtolower(Input::get('email')));
-        $user->password = bcrypt(Input::get('password'));
-        $user->email_verification_code = $verificationCode;
-        $user->email_verified = 1;
-        // $user->email_verified = 0;
-        $user->save();
+                  return response()->success(compact('user', 'token'));
 
-        $token = JWTAuth::fromUser($user);
+                  /*
+                  $user = User::create([
+                      'name' => Input::get('name'),
+                      'email' => Input::get('email'),
+                  ]);
 
-/*
-        Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
-            $m->to($request->email, 'test')->subject('Confirmez votre mail');
-        });
-*/
+                  return response()->success(compact('user'));
+                  */
 
-        return response()->success(compact('user', 'token'));
-
-        /*
-        $user = User::create([
-            'name' => Input::get('name'),
-            'email' => Input::get('email'),
-        ]);
-
-        return response()->success(compact('user'));
-        */
     }
 
 

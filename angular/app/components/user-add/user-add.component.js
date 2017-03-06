@@ -5,7 +5,7 @@ class UserAddController{
     this.formSubmitted = false
     this.API = API
     this.alerts = []
-
+    this.passwordError=true;
     this.name = "brian"
     this.password="Mopiou190257"
     this.email="test2@test.com"
@@ -28,9 +28,10 @@ class UserAddController{
         'password': this.password
       }).then(function () {
         let alert = { type: 'success', 'title': 'Super !', msg: 'Utilisateur ajouté.' }
-        $state.go('app.userlist', { alerts: alert})
+      //  $state.go('app.userlist', { alerts: alert})
       }, function (response) {
-        let alert = { type: 'error', 'title': 'Erreur !', msg: response.data.message }
+        let alert = { type: 'error', 'title': 'Erreur !', msg: response.data.errors.email[0]}
+        console.log(response.data.errors);
         $state.go($state.current, { alerts: alert})
       })
     } else {
@@ -42,6 +43,7 @@ class UserAddController{
     $onInit(){
     }
 }
+
 
 export const UserAddComponent = {
     templateUrl: './views/app/components/user-add/user-add.component.html',

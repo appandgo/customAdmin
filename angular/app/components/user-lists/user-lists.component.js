@@ -39,14 +39,24 @@ class UserListsController {
           })
 
           .withBootstrap()
+        if(this.can('manage.users')){
+          this.dtColumns = [
+            DTColumnBuilder.newColumn('id').withTitle('ID'),
+            DTColumnBuilder.newColumn('name').withTitle('Nom'),
+            DTColumnBuilder.newColumn('email').withTitle('Email'),
+            DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+              .renderWith(actionsHtml)
+          ]
+        }else{
+          this.dtColumns = [
+            DTColumnBuilder.newColumn('id').withTitle('ID'),
+            DTColumnBuilder.newColumn('name').withTitle('Nom'),
+            DTColumnBuilder.newColumn('email').withTitle('Email')
+          ]
+        }
 
-        this.dtColumns = [
-          DTColumnBuilder.newColumn('id').withTitle('ID'),
-          DTColumnBuilder.newColumn('name').withTitle('Nom'),
-          DTColumnBuilder.newColumn('email').withTitle('Email'),
-          DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-            .renderWith(actionsHtml)
-        ]
+
+
 
         this.displayTable = true
       })
@@ -56,7 +66,6 @@ class UserListsController {
     }
 
        let actionsHtml = (data) => {
-         if(this.can('manage.users')){
            return `
                      <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
                          <i class="fa fa-edit"></i>
@@ -65,9 +74,6 @@ class UserListsController {
                      <button class="btn btn-xs btn-danger" ng-show="vm.can('delete.user')" ng-click="vm.delete(${data.id})">
                          <i class="fa fa-trash-o"></i>
                      </button>`
-         }else{
-           return '<center>-</center>'
-         }
 
       }
 
@@ -111,7 +117,10 @@ class UserListsController {
     })
   }
 
-  $onInit () {}
+  $onInit () {
+
+    console.log(JSON.stringify(this.$state.params));
+  }
 }
 
 export const UserListsComponent = {
