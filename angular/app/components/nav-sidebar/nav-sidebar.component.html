@@ -2,10 +2,10 @@
   <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
-        
+
         <!--<img src="{{vm.userData.avatar}}" class="img-circle" alt="User Image" onError="this.src='//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16'">-->
 
-              
+
         <img src="//placeholdit.imgix.net/~text?txtfont=monospace,bold&bg=DD4B39&txtclr=ffffff&txt=A&w=45&h=45&txtsize=16" class="img-circle" alt="User Image">
 
 
@@ -32,12 +32,12 @@
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-      <li class="treeview" ng-show="vm.can('manage.users')">
+      <li class="treeview" ng-show="vm.can('manage.users') || vm.can('list.users')">
         <a href="javascript:void(0)">
           <i class="fa fa-users"></i> <span>Utilisateurs</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li ng-show="vm.can('manage.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>Liste Utilisateurs</span></a></li>
+          <li ng-show="vm.can('manage.users') || vm.can('list.users')" class="active"><a ui-sref='app.userlist'><i class="fa fa-circle-o"></i> <span>Liste Utilisateurs</span></a></li>
         </ul>
       </li>
       <li class="treeview" ng-show="vm.can('manage.roles') || vm.can('manage.permissions')">

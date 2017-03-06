@@ -1,9 +1,9 @@
 class UserListsController {
-  constructor ($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API) {
+  constructor ($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API,AclService) {
     'ngInject'
     this.API = API
     this.$state = $state
-
+    this.can = AclService.can
     let Users = this.API.service('users')
 
     Users.getList()
@@ -55,17 +55,24 @@ class UserListsController {
       $compile(angular.element(row).contents())($scope)
     }
 
-    let actionsHtml = (data) => {
-      return `
-                <a class="btn btn-xs btn-warning" ui-sref="app.useredit({userId: ${data.id}})">
-                    <i class="fa fa-edit"></i>
-                </a>
-                &nbsp
-                <button class="btn btn-xs btn-danger" ng-click="vm.delete(${data.id})">
-                    <i class="fa fa-trash-o"></i>
-                </button>`
+       let actionsHtml = (data) => {
+         if(this.can('manage.users')){
+           return `
+                     <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
+                         <i class="fa fa-edit"></i>
+                     </a>
+                     &nbsp
+                     <button class="btn btn-xs btn-danger" ng-show="vm.can('delete.user')" ng-click="vm.delete(${data.id})">
+                         <i class="fa fa-trash-o"></i>
+                     </button>`
+         }else{
+           return '<center>-</center>'
+         }
+
+      }
+
     }
-  }
+
 
   delete (userId) {
     let API = this.API
