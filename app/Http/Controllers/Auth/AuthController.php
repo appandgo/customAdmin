@@ -110,9 +110,6 @@ class AuthController extends Controller
             //just for mobile response test
             return $authUser;
         }
-        Mail::send('emails.userverification', ['verificationCode' => 1], function ($m) use ($oauthUser) {
-            $m->to($oauthUser->email, 'test')->subject('Email Confirmation');
-        });
         return User::create([
             'name' => $oauthUser->name,
             'email' => $oauthUser->email,
