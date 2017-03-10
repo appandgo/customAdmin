@@ -12,7 +12,10 @@ use Input;
 use Validator;
 use JWTAuth;
 use Mail;
-
+/**
+ * This controller contains all the provided operations to manage users
+ * @Resource("Users", uri="/users")
+ */
 class UserController extends Controller
 {
     /**
@@ -44,7 +47,7 @@ class UserController extends Controller
             'password'   => 'required|min:8',
         ]);
 
-        
+
                   $verificationCode = str_random(40);
 
                   $user = new User();

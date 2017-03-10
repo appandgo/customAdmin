@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Mail;
 use Socialite;
-
+/*
+* @Resouce("AuthController")
+*/
 class AuthController extends Controller
 {
     /**
