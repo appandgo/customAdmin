@@ -123,9 +123,18 @@ class AuthController extends Controller
     //It will receive directly yhe oauthProviderId && the provider_name
 
     public function findUserByProviderToken($provider,$accessToken){
+      if($provider=='facebook'){
         $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
         $user = $this->findOrCreateUser($oauthUser,$provider);
         return response()->success($user);
+      }else if($provider=='google'){
+        //the accessToken param received in this case is the serverAuthCode
+        $aTokenFromServerAuth=Socialite::driver($provider)->getAccessToken($serverAuthCode);
+        $oauthUser = Socialite::driver($provider)->userFromToken($aTokenFromServerAuth);
+        $user = $this->findOrCreateUser($oauthUser,$provider);
+        return response()->success($user);
+      }
+
     }
 
     /**
