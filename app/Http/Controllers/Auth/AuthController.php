@@ -129,7 +129,7 @@ class AuthController extends Controller
         return response()->success($user);
       }else if($provider=='google'){
         //the accessToken param received in this case is the serverAuthCode
-        $aTokenFromServerAuth=Socialite::driver($provider)->getAccessToken($accessToken);
+        $aTokenFromServerAuth=Socialite::driver($provider)->getTokenFields($accessToken);
         $oauthUser = Socialite::driver($provider)->userFromToken($aTokenFromServerAuth);
         $user = $this->findOrCreateUser($oauthUser,$provider);
         return response()->success($user);
