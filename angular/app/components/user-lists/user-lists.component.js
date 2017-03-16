@@ -3,8 +3,7 @@ class UserListsController {
     'ngInject'
     this.API = API
     this.$state = $state
-    this.can = AclService.can
-    
+
     let Users = this.API.service('users')
 
     Users.getList()
