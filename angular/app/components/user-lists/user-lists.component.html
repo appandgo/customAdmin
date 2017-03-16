@@ -10,19 +10,19 @@
     <div class="col-md-12">
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">Liste des utilisateurs</h3>
+          <h3 class="box-title" ng-show="vm.can('list.users')||vm.can('manage.users')">Liste des utilisateurs</h3>
           <div class="box-tools pull-right">
-            <a ui-sref="app.useradd" class="btn btn-block btn-success btn-xs"><i class="fa fa-plus"></i> Ajouter</a>
+            <a ui-sref="app.useradd" ng-show="vm.can('add.user')" class="btn btn-block btn-success btn-xs"><i class="fa fa-plus"></i> Ajouter</a>
           </div>
 
           <!--<div class="box-tools pull-right">-->
             <!--<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
             <!--<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
           <!--</div>-->
-          
+
         </div>
-        <div class="box-body">
-          <table datatable="" width="100%" class="table table-striped table-bordered" ng-if="vm.displayTable" dt-options="vm.dtOptions" dt-columns="vm.dtColumns"></table>
+        <div class="box-body" >
+          <table  datatable="" width="100%" class="table table-striped table-bordered" ng-if="vm.displayTable" dt-options="vm.dtOptions" dt-columns="vm.dtColumns"></table>
         </div>
       </div>
     </div>
