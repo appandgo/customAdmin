@@ -1,8 +1,9 @@
 class UserListsController {
-  constructor ($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API) {
+  constructor ($scope, $state, $compile, DTOptionsBuilder, DTColumnBuilder, API,AclService) {
     'ngInject'
     this.API = API
     this.$state = $state
+    this.can=AclService.can
     let Users = this.API.service('users')
     Users.getList()
       .then((response) => {
@@ -55,7 +56,7 @@ class UserListsController {
 
     let actionsHtml = (data) => {
       return `
-      <a class="btn btn-xs btn-warning" ui-sref="app.useredit({userId: ${data.id}})">
+      <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
           <i class="fa fa-edit"></i>
       </a>
       &nbsp

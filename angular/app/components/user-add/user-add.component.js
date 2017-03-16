@@ -1,11 +1,14 @@
 class UserAddController{
-    constructor(API, $state, $stateParams){
+    constructor(API, $state, $stateParams,AclService){
         'ngInject';
     this.$state = $state
     this.formSubmitted = false
     this.API = API
     this.alerts = []
     this.can = AclService.can
+    if(!this.can('add.user')){
+        this.$state.go('app.landing')
+    }
     this.name = "brian"
     this.password="Mopiou190257"
     this.email="test2@test.com"
