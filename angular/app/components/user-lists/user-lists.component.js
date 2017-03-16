@@ -55,13 +55,13 @@ class UserListsController {
 
     let actionsHtml = (data) => {
       return `
-                <a class="btn btn-xs btn-warning" ui-sref="app.useredit({userId: ${data.id}})">
-                    <i class="fa fa-edit"></i>
-                </a>
-                &nbsp
-                <button class="btn btn-xs btn-danger" ng-click="vm.delete(${data.id})">
-                    <i class="fa fa-trash-o"></i>
-                </button>`
+      <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
+          <i class="fa fa-edit"></i>
+      </a>
+      &nbsp
+      <button class="btn btn-xs btn-danger" ng-show="vm.can('delete.user')" ng-click="vm.delete(${data.id})">
+          <i class="fa fa-trash-o"></i>
+      </button>`
     }
   }
 
