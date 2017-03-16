@@ -3,9 +3,7 @@ class UserListsController {
     'ngInject'
     this.API = API
     this.$state = $state
-
     let Users = this.API.service('users')
-
     Users.getList()
       .then((response) => {
         let dataSet = response.plain()
