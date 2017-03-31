@@ -238,4 +238,13 @@ class AuthController extends Controller
 
         return response()->success(compact('user', 'token'));
     }
+
+    public function refreshDeviceNotificationToken($userId,$device_notification_token){
+      //update notification token for mobile app users
+        $user = User::find($userId);
+        $user->device_notification_token=$device_notification_token;
+        $user->save();
+        return response()->success($user);
+
+    }
 }

@@ -58,6 +58,7 @@ class UserController extends Controller
                   $user->email_verified = 1;
                   // $user->email_verified = 0;
                   $user->save();
+
                   $token = JWTAuth::fromUser($user);
 
           /*

@@ -31,6 +31,7 @@ $api->group(['middleware' => ['api']], function ($api) {
     $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
     $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
     $api->post('auth/password/reset', 'Auth\PasswordResetController@reset');
+    $api->get('notifications/refresh_token/{userId}/{device_notification_token}', 'Auth\AuthController@refreshDeviceNotificationToken');
 });
 
 $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
