@@ -11,10 +11,11 @@
         "barryvdh/laravel-cors": "0.7.x",
         "laravelangular/generators": "2.7.x",
         "dingo/api": "1.0.x@dev",
-        "laravel/socialite": "^2.0",
+        "laravel/socialite": "3.0.0",
         "bican/roles": "2.1.*",
         "mpociot/laravel-firebase-sync": "^1.0",
-        "brozot/laravel-fcm": "^1.2"
+        "brozot/laravel-fcm": "^1.2",
+        "laravel-notification-channels/backport": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
