@@ -11,7 +11,7 @@
   "website": "http://silverbux.github.io/laravel-angular-admin/",
   "repository": "https://github.com/mopiou/customAdmin/tree/zuo-zhang",
   "scripts": {
-    "postdeploy": "composer install"
+    "postdeploy": "composer update"
   },
   "addons": [
   ],
