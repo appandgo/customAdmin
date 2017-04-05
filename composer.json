@@ -54,7 +54,8 @@
             "php artisan clear-compiled",
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan optimize",
-            "php artisan key:generate"
+            "php artisan key:generate",
+            "php artisan config:cache"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
