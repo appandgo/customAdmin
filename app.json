@@ -124,7 +124,42 @@
       "description": "google redirect url for oauth login (optional).",
       "required": false,
       "value":"https://appandgo-mounir-customadmin.herokuapp.com/auth/google/callback"
-    }
+    },
+    "FIREBASE_API_KEY": {
+      "description": "Firebase API Key",
+      "required": false,
+      "value":"AIzaSyBS_0QLme2x3h1tdTRrDitVqVfSTNNmNx4"
+    },
+    "FIREBASE_AUTH_DOMAIN": {
+      "description": "Firebase Auth Domain",
+      "required": false,
+      "value":"appandgo-163110.firebaseapp.com"
+    },
+    "FIREBASE_DATABASE_URL": {
+      "description": "Firebase database url",
+      "required": false,
+      "value":"https://appandgo-163110.firebaseio.com"
+    },
+    "FIREBASE_DATABASE_SECRET": {
+      "description": "Database secret(optional)",
+      "required": false,
+      "value":"null"
+    },
+    "FIREBASE_STORAGE_BUCKET": {
+      "description": "FB storage bucket(optional)",
+      "required": false,
+      "value":"appandgo-163110.appspot.com"
+    },
+    "FCM_SERVER_KEY": {
+      "description": "Firebase Cloud Messaging server key",
+      "required": false,
+      "value":"AAAAZb2f-bE:APA91bHAKHfD6QX7hlggMm45GYI1Uc4hcMHZNvt0V82Y3ou6NxwQLflZiC5kCMGq9X25aSHadKemxF734GIQruzVRHe6Zg7v3AzF2Fzkd9ywrERzrFysWeSl4qy5jdM5baVAMVtw4uWM"
+    },
+    "FCM_SENDER_ID": {
+      "description": "FB storage bucket(optional)",
+      "required": false,
+      "value":"436973074865"
+    },
   },
   "buildpacks": [
     {
