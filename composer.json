@@ -52,18 +52,20 @@
            "php artisan jwt:generate"
         ],
         "post-install-cmd": [
+            "composer dumpautoload -o",
+            "php artisan config:clear",
+            "php artisan config:cache",
+            "php artisan route:cache",
             "php artisan clear-compiled",
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan optimize",
             "php artisan key:generate",
 
+
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled",
-            "composer dumpautoload -o",
-            "php artisan config:clear",
-            "php artisan config:cache",
-            "php artisan route:cache",
+            "php artisan clear-compiled"
+
         ],
         "post-update-cmd": [
             "php artisan optimize"
