@@ -1,14 +1,11 @@
 class UserAddController{
-    constructor(API, $state, $stateParams,AclService){
+    constructor(API, $state, $stateParams){
         'ngInject';
     this.$state = $state
     this.formSubmitted = false
     this.API = API
     this.alerts = []
-    this.can = AclService.can
-    if(!this.can('add.user')){
-        this.$state.go('app.landing')
-    }
+    this.passwordError=true;
     this.name = "brian"
     this.password="Mopiou190257"
     this.email="test2@test.com"
@@ -31,9 +28,10 @@ class UserAddController{
         'password': this.password
       }).then(function () {
         let alert = { type: 'success', 'title': 'Super !', msg: 'Utilisateur ajouté.' }
-        $state.go('app.userlist', { alerts: alert})
+      //  $state.go('app.userlist', { alerts: alert})
       }, function (response) {
-        let alert = { type: 'error', 'title': 'Erreur !', msg: response.data.message }
+        let alert = { type: 'error', 'title': 'Erreur !', msg: response.data.errors.email[0]}
+        
         $state.go($state.current, { alerts: alert})
       })
     } else {
@@ -45,6 +43,7 @@ class UserAddController{
     $onInit(){
     }
 }
+
 
 export const UserAddComponent = {
     templateUrl: './views/app/components/user-add/user-add.component.html',

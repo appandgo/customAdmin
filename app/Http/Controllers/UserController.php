@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use Auth;
-use Bican\Roles\Models\Permission;
-use Bican\Roles\Models\Role;
+use Ultraware\Roles\Models\Permission;
+use Ultraware\Roles\Models\Role;
 use Hash;
 use Illuminate\Http\Request;
 use Input;
 use Validator;
 use JWTAuth;
 use Mail;
-
+use App\Notifications\FCMNotification;
+/**
+ * This controller contains all the provided operations to manage users
+ * @Resource("Users", uri="/users")
+ */
 class UserController extends Controller
 {
     /**
@@ -32,11 +36,10 @@ class UserController extends Controller
      *
      * @return JSON
      */
-    public function postUsers(Request $request)
-    //public function postUsers()
+    public function store(Request $request)
     {
 
-
+        $notification=new FCMNotification();
         $this->validate($request, [
             'name'       => 'required|min:3',
             'email'      => 'required|email|unique:users',
@@ -45,36 +48,36 @@ class UserController extends Controller
         ]);
 
 
+                  $verificationCode = str_random(40);
 
-        $verificationCode = str_random(40);
+                  $user = new User();
+                  $user->name = trim( $request->input('name'));
+                  $user->email = trim(strtolower(Input::get('email')));
+                  $user->password = bcrypt(Input::get('password'));
+                  $user->email_verification_code = $verificationCode;
+                  $user->email_verified = 1;
+                  // $user->email_verified = 0;
+                  $user->save();
 
-        $user = new User();
-        $user->name = trim( $request->input('name'));
-        $user->email = trim(strtolower(Input::get('email')));
-        $user->password = bcrypt(Input::get('password'));
-        $user->email_verification_code = $verificationCode;
-        $user->email_verified = 1;
-        // $user->email_verified = 0;
-        $user->save();
+                  $token = JWTAuth::fromUser($user);
 
-        $token = JWTAuth::fromUser($user);
+          /*
+                  Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
+                      $m->to($request->email, 'test')->subject('Confirmez votre mail');
+                  });
+          */
+                  $notification->toDevice('cx_izngUA3E:APA91bEbkOf_2zsiAVfMrSAEQVPjGLLJX0FgJ0uE3EBMJ8lS5m1MNKEVWcU1Pdvzkp7-UE7xjHJy9NxXNvk0ETPRZV_npdM7oG4wAaAgzDma8yRSMvTepNP6oDfkcruPW1RAPmNSLISC');
+                  return response()->success(compact('user', 'token'));
 
-/*
-        Mail::send('emails.userverification', ['verificationCode' => $verificationCode], function ($m) use ($request) {
-            $m->to($request->email, 'test')->subject('Confirmez votre mail');
-        });
-*/
+                  /*
+                  $user = User::create([
+                      'name' => Input::get('name'),
+                      'email' => Input::get('email'),
+                  ]);
 
-        return response()->success(compact('user', 'token'));
+                  return response()->success(compact('user'));
+                  */
 
-        /*
-        $user = User::create([
-            'name' => Input::get('name'),
-            'email' => Input::get('email'),
-        ]);
-
-        return response()->success(compact('user'));
-        */
     }
 
 
@@ -85,7 +88,7 @@ class UserController extends Controller
      *
      * @return JSON success message
      */
-    public function putMe(Request $request)
+    public function updateMe(Request $request)
     {
         $user = Auth::user();
 
@@ -143,7 +146,7 @@ class UserController extends Controller
      *
      * @return JSON
      */
-    public function getIndex()
+    public function index()
     {
         $users = User::all();
 
@@ -157,7 +160,7 @@ class UserController extends Controller
      *
      * @return JSON
      */
-    public function getShow($id)
+    public function show($id)
     {
         $user = User::find($id);
         $user['role'] = $user
@@ -173,7 +176,7 @@ class UserController extends Controller
      *
      * @return JSON success message
      */
-    public function putShow(Request $request)
+    public function update(Request $request)
     {
         $userForm = array_dot(
             app('request')->only(
@@ -214,7 +217,7 @@ class UserController extends Controller
      *
      * @return JSON success message
      */
-    public function deleteUser($id)
+    public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();

@@ -164,6 +164,8 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class,
+        Ultraware\Roles\RolesServiceProvider::class,
 
     ],
 
@@ -213,6 +215,8 @@ return [
         'Input'     => Illuminate\Support\Facades\Input::class,
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+	      'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
     ],
 
 ];

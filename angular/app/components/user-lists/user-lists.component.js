@@ -3,8 +3,9 @@ class UserListsController {
     'ngInject'
     this.API = API
     this.$state = $state
-    this.can=AclService.can
+    this.can = AclService.can
     let Users = this.API.service('users')
+
     Users.getList()
       .then((response) => {
         let dataSet = response.plain()
@@ -38,14 +39,24 @@ class UserListsController {
           })
 
           .withBootstrap()
+        if(this.can('manage.users')){
+          this.dtColumns = [
+            DTColumnBuilder.newColumn('id').withTitle('ID'),
+            DTColumnBuilder.newColumn('name').withTitle('Nom'),
+            DTColumnBuilder.newColumn('email').withTitle('Email'),
+            DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+              .renderWith(actionsHtml)
+          ]
+        }else{
+          this.dtColumns = [
+            DTColumnBuilder.newColumn('id').withTitle('ID'),
+            DTColumnBuilder.newColumn('name').withTitle('Nom'),
+            DTColumnBuilder.newColumn('email').withTitle('Email')
+          ]
+        }
 
-        this.dtColumns = [
-          DTColumnBuilder.newColumn('id').withTitle('ID'),
-          DTColumnBuilder.newColumn('name').withTitle('Nom'),
-          DTColumnBuilder.newColumn('email').withTitle('Email'),
-          DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-            .renderWith(actionsHtml)
-        ]
+
+
 
         this.displayTable = true
       })
@@ -54,17 +65,20 @@ class UserListsController {
       $compile(angular.element(row).contents())($scope)
     }
 
-    let actionsHtml = (data) => {
-      return `
-      <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
-          <i class="fa fa-edit"></i>
-      </a>
-      &nbsp
-      <button class="btn btn-xs btn-danger" ng-show="vm.can('delete.user')" ng-click="vm.delete(${data.id})">
-          <i class="fa fa-trash-o"></i>
-      </button>`
+       let actionsHtml = (data) => {
+           return `
+                     <a class="btn btn-xs btn-warning" ng-show="vm.can('manage.users')"  ui-sref="app.useredit({userId: ${data.id}})">
+                         <i class="fa fa-edit"></i>
+                     </a>
+                     &nbsp
+                     <button class="btn btn-xs btn-danger" ng-show="vm.can('delete.user')" ng-click="vm.delete(${data.id})">
+                         <i class="fa fa-trash-o"></i>
+                     </button>`
+
+      }
+
     }
-  }
+
 
   delete (userId) {
     let API = this.API
@@ -83,7 +97,7 @@ class UserListsController {
       showLoaderOnConfirm: true,
       html: false
     }, function () {
-      API.one('users').one('user', userId).remove()
+      API.one('users', userId).remove()
         .then(() => {
           /*
           swal({
@@ -103,7 +117,10 @@ class UserListsController {
     })
   }
 
-  $onInit () {}
+  $onInit () {
+
+  //  console.log(JSON.stringify(this.$state.params));
+  }
 }
 
 export const UserListsComponent = {

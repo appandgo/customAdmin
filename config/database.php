@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,6 +64,7 @@ return [
             'prefix'    => '',
             'strict'    => false,
             'engine'    => null,
+            'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
         ],
 
         'pgsql' => [

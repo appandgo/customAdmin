@@ -3,14 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Auth;
-use Bican\Roles\Models\Role;
+use Ultraware\Roles\Models\Role;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Mail;
 use Socialite;
-
+/*
+* @Resouce("AuthController")
+*/
 class AuthController extends Controller
 {
     /**
@@ -110,6 +112,7 @@ class AuthController extends Controller
             //just for mobile response test
             return $authUser;
         }
+
         return User::create([
             'name' => $oauthUser->name,
             'email' => $oauthUser->email,
@@ -121,7 +124,6 @@ class AuthController extends Controller
     }
     //This method will handle the Ionic application facebook Oauth
     //It will receive directly yhe oauthProviderId && the provider_name
-
     public function findUserByProviderToken($provider,$accessToken){
         $oauthUser = Socialite::driver($provider)->userFromToken($accessToken);
         $user = $this->findOrCreateUser($oauthUser,$provider);
@@ -235,5 +237,14 @@ class AuthController extends Controller
         });
 
         return response()->success(compact('user', 'token'));
+    }
+
+    public function refreshDeviceNotificationToken($userId,$device_notification_token){
+      //update notification token for mobile app users
+        $user = User::find($userId);
+        $user->device_notification_token=$device_notification_token;
+        $user->save();
+        return response()->success($user);
+
     }
 }
