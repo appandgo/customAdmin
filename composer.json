@@ -55,6 +55,7 @@
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan optimize",
             "php artisan key:generate",
+            "php composer dumpautoload -o",
             "php artisan config:cache"
         ],
         "pre-update-cmd": [
