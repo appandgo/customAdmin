@@ -41,15 +41,16 @@
     "scripts": {
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\"",
-            "composer dumpautoload -o",
-            "php artisan config:cache",
-            "php artisan route:cache"
+
         ],
         "post-create-project-cmd": [
            "php -r \"unlink('code_of_conduct.md');\"",
            "php -r \"unlink('CHANGELOG.md');\"",
            "php -r \"unlink('.codeclimate.yml');\"",
            "php -r \"unlink('.travis.yml');\"",
+           "composer dumpautoload -o",
+           "php artisan config:cache",
+           "php artisan route:cache",
            "php artisan key:generate",
            "php artisan jwt:generate"
         ],
