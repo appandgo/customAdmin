@@ -40,7 +40,10 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
+            "php -r \"copy('.env.example', '.env');\"",
+            "composer dumpautoload -o",
+            "php artisan config:cache",
+            "php artisan route:cache"
         ],
         "post-create-project-cmd": [
            "php -r \"unlink('code_of_conduct.md');\"",
@@ -55,9 +58,7 @@
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan optimize",
             "php artisan key:generate",
-            "composer dumpautoload -o",
-            "php artisan config:cache",
-            "php artisan route:cache"
+
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
