@@ -51,7 +51,6 @@
            "php artisan jwt:generate"
         ],
         "post-install-cmd": [
-            "php artisan config:clear",
             "php artisan clear-compiled",
             "php -r \"copy('.env.example', '.env');\"",
             "php artisan optimize",
