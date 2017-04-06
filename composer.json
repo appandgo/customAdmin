@@ -57,7 +57,8 @@
             "php artisan optimize",
             "php artisan key:generate",
             "php artisan api:cache",
-            "php artisan api:routes"
+            "php artisan api:routes",
+            "php artisan migrate"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
