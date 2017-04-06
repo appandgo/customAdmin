@@ -15,7 +15,7 @@ class UserPermissionsAddController {
   save (isValid) {
     this.$state.go(this.$state.current, {}, { alerts: 'test' })
     if (isValid) {
-      let Permissions = this.API.service('', this.API.all('permissions'))
+      let Permissions = this.API.service('permissions')
       let $state = this.$state
 
       Permissions.post({
