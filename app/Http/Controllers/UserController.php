@@ -66,7 +66,7 @@ class UserController extends Controller
                       $m->to($request->email, 'test')->subject('Confirmez votre mail');
                   });
           */
-                  $notification->toDevice('cx_izngUA3E:APA91bEbkOf_2zsiAVfMrSAEQVPjGLLJX0FgJ0uE3EBMJ8lS5m1MNKEVWcU1Pdvzkp7-UE7xjHJy9NxXNvk0ETPRZV_npdM7oG4wAaAgzDma8yRSMvTepNP6oDfkcruPW1RAPmNSLISC');
+                  //$notification->toDevice('cx_izngUA3E:APA91bEbkOf_2zsiAVfMrSAEQVPjGLLJX0FgJ0uE3EBMJ8lS5m1MNKEVWcU1Pdvzkp7-UE7xjHJy9NxXNvk0ETPRZV_npdM7oG4wAaAgzDma8yRSMvTepNP6oDfkcruPW1RAPmNSLISC');
                   return response()->success(compact('user', 'token'));
 
                   /*
