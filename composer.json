@@ -58,7 +58,9 @@
             "php artisan key:generate",
             "php artisan api:cache",
             "php artisan api:routes",
-            "php artisan migrate"
+            "php artisan migrate",
+            "php artisan db:seed"
+
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"
