@@ -10,7 +10,7 @@
         "tymon/jwt-auth": "0.5.*",
         "laravelangular/generators": "2.7.*",
         "dingo/api": "1.0.x@dev",
-        "laravel/socialite": "3.0.0",
+        "laravel/socialite": "^3.0",
         "bican/roles": "dev-master",
         "mpociot/laravel-firebase-sync": "^1.0",
         "brozot/laravel-fcm": "^1.2",
