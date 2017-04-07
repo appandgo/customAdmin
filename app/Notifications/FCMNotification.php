@@ -63,38 +63,29 @@ class FCMNotification extends Notification
         ];
     }
     // this is a custom function that uses FCM notification manager to send a test downstream message to a specified device by its token
-    public function toDevice($device_token){
-      $optionBuiler = new OptionsBuilder();
-      $optionBuiler->setTimeToLive(60*20);
+    public function send($device_token,$title,$body){
+          $optionBuiler = new OptionsBuilder();
+          $optionBuiler->setTimeToLive(60*20);
+          $option = $optionBuiler->build();
+          $dataBuilder = new PayloadDataBuilder();
+          $dataBuilder->addData(['a_data' => 'my_data']);
 
-      $notificationBuilder = new PayloadNotificationBuilder('my title');
-      $notificationBuilder->setBody('Hello world')
-                ->setSound('default');
+          $notificationBuilder = new PayloadNotificationBuilder();
+          $notificationBuilder->setTitle($title)
+                          ->setBody($body)
+                          ->setSound('default');
 
-      $dataBuilder = new PayloadDataBuilder();
-      $dataBuilder->addData(['a_data' => 'my_data']);
-
-      $option = $optionBuiler->build();
-      $notification = $notificationBuilder->build();
-      $data = $dataBuilder->build();
-
-      //$token = "a_registration_from_your_database";
-
-      $downstreamResponse = FCM::sendTo($device_token, $option, $notification, $data);
-
-      /*$downstreamResponse->numberSuccess();
-      $downstreamResponse->numberFailure();
-      $downstreamResponse->numberModification();
-
-      //return Array - you must remove all this tokens in your database
-      $downstreamResponse->tokensToDelete();
-
-      //return Array (key : oldToken, value : new token - you must change the token in your database )
-      $downstreamResponse->tokensToModify();
-
-      //return Array - you should try to resend the message to the tokens in the array
-      $downstreamResponse->tokensToRetry();
-
-      // return Array (key:token, value:errror) - in production you should remove from your database the tokens*/
-          }
+          $notification = $notificationBuilder->build();
+          $downstreamResponse = FCM::sendTo($device_token, $option, $notification, null);
+          /*$downstreamResponse->numberSuccess();
+          $downstreamResponse->numberFailure();
+          $downstreamResponse->numberModification();
+          //return Array - you must remove all this tokens in your database
+          $downstreamResponse->tokensToDelete();
+          //return Array (key : oldToken, value : new token - you must change the token in your database )
+          $downstreamResponse->tokensToModify();
+          //return Array - you should try to resend the message to the tokens in the array
+          $downstreamResponse->tokensToRetry();
+          // return Array (key:token, value:errror) - in production you should remove from your database the tokens*/
+      }
 }
