@@ -4,8 +4,9 @@
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
   $api->group(['middleware' => ['api']], function ($api) {
-      $api->resource('auth', 'App\Http\Controllers\Auth\AuthController');
+      //$api->resource('auth', 'App\Http\Controllers\Auth\AuthController');
       $api->post('auth/login', 'App\Http\Controllers\Auth\AuthController@postLogin');
+      $api->post('auth/register', 'App\Http\Controllers\Auth\AuthController@postRegister');
 
       //facebook Oauth api call
       //here we are sending to the server provider, id and the accessToken
@@ -20,7 +21,7 @@ $api->version('v1', function ($api) {
   $api->group(['middleware' => ['api', 'api.auth']], function ($api) {
       $api->get('users/me', 'App\Http\Controllers\UserController@getMe');
       $api->put('users/me', 'App\Http\Controllers\UserController@updateMe');
-    
+
       $api->resource('roles', 'App\Http\Controllers\UserRoleController');
       $api->resource('permissions', 'App\Http\Controllers\UserPermissionController');
       $api->resource('users','App\Http\Controllers\UserController');
